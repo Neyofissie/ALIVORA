@@ -38,6 +38,12 @@ revoke insert, update, delete on public.household_invites from anon, authenticat
 -- Evaluate auth.uid() once per statement (Supabase performance advisor).
 alter policy profiles_self on public.profiles
   using (id = (select auth.uid())) with check (id = (select auth.uid()));
+alter policy profiles_comembers on public.profiles using (
+  exists (
+    select 1 from household_members me join household_members them on them.household_id = me.household_id
+    where me.user_id = (select auth.uid()) and me.status = 'active' and them.user_id = profiles.id and them.status = 'active'
+  )
+);
 
 -- Superseded entry points: create_household(text, text) from 0001, and
 -- handle_new_user() from 0008a (profiles now come from ensure_profile()).
