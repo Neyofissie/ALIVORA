@@ -4,6 +4,9 @@
   "private": true,
   "description": "Alivora — Life, beautifully in sync. AI-powered family planning PWA.",
   "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=20.9"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

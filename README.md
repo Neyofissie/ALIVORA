@@ -35,6 +35,11 @@ verification, then household onboarding. **Sign in** goes straight to a seeded h
 (Emma, James, Ava and Noah). Demo data is kept in `localStorage`. To start over, use
 **Settings → Reset demo data**. The full component showcase is at `/design-system`.
 
+## Deploying
+
+Alivora deploys to Vercel straight from GitHub; see [docs/deploy.md](docs/deploy.md).
+Without Supabase environment variables it runs in demo mode on sample data.
+
 ## Scripts
 
 | Command | What it does |
