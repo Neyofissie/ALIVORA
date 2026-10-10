@@ -116,4 +116,28 @@ select revoke_invitation(:'inv3') \g /dev/null
 select pg_temp.expect_error('10000000-0000-0000-0000-00000000000c', format($q$select accept_invitation(%L)$q$, :'tok3'), 'INVITE_REVOKED');
 
 reset role;
+
+-- Only the intended entry points are callable from the API.
+do $$
+declare
+  f regprocedure;
+  callable_by_authenticated regprocedure[] := array[
+    'ensure_profile(text)', 'create_household(text,text,time,text[])', 'set_household_cuisines(uuid,text[])',
+    'create_invitation(uuid,text,household_role)', 'accept_invitation(text)', 'revoke_invitation(uuid)',
+    'remove_member(uuid,uuid)', 'leave_household(uuid)', 'get_invitation(text)',
+    'is_household_member(uuid)', 'household_role_of(uuid)']::regprocedure[];
+begin
+  for f in
+    select p.oid::regprocedure from pg_proc p
+    where p.pronamespace = 'public'::regnamespace and p.prosecdef
+  loop
+    if has_function_privilege('anon', f, 'execute') and f <> 'get_invitation(text)'::regprocedure then
+      raise exception 'FAIL: anon can execute %', f;
+    end if;
+    if has_function_privilege('authenticated', f, 'execute') and not f = any (callable_by_authenticated) then
+      raise exception 'FAIL: authenticated can execute internal function %', f;
+    end if;
+  end loop;
+end $$;
+
 select 'Invite tests passed' as result;

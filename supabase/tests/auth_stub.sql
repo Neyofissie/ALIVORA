@@ -10,4 +10,7 @@ do $$ begin
   if not exists (select 1 from pg_roles where rolname = 'anon') then create role anon nologin; end if;
 end $$;
 grant usage on schema public, auth to authenticated, anon;
-alter default privileges in schema public grant select, insert, update, delete on tables to authenticated;
+-- Mirror Supabase's defaults: API roles get table access and EXECUTE on every
+-- new function, so tests catch anything a migration forgets to revoke.
+alter default privileges in schema public grant select, insert, update, delete on tables to anon, authenticated;
+alter default privileges in schema public grant execute on functions to anon, authenticated;
