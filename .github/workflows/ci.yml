@@ -53,9 +53,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Apply migrations and run RLS isolation tests
         run: |
-          psql -v ON_ERROR_STOP=1 -q -c "create database alivora_test"
-          for f in supabase/tests/auth_stub.sql supabase/migrations/*.sql supabase/tests/rls_isolation.sql; do
-            echo "::group::$f"
-            psql -v ON_ERROR_STOP=1 -q -d alivora_test -f "$f"
-            echo "::endgroup::"
+          # Each test suite gets a fresh database with every migration applied.
+          for t in rls_isolation invites; do
+            psql -v ON_ERROR_STOP=1 -q -c "create database $t"
+            for f in supabase/tests/auth_stub.sql supabase/migrations/*.sql "supabase/tests/$t.sql"; do
+              echo "::group::$t: $f"
+              psql -v ON_ERROR_STOP=1 -q -d "$t" -f "$f"
+              echo "::endgroup::"
+            done
           done

@@ -2,19 +2,19 @@
 -- Run after auth_stub.sql and all migrations. Raises an exception on failure.
 \set ON_ERROR_STOP on
 
-insert into auth.users values ('00000000-0000-0000-0000-00000000000a'), ('00000000-0000-0000-0000-00000000000b');
-insert into profiles (id, display_name) values
-  ('00000000-0000-0000-0000-00000000000a', 'Alice'), ('00000000-0000-0000-0000-00000000000b', 'Bob');
+insert into auth.users (id, email, raw_user_meta_data) values
+  ('00000000-0000-0000-0000-00000000000a', 'alice@example.com', '{"display_name": "Alice"}'),
+  ('00000000-0000-0000-0000-00000000000b', 'bob@example.com', '{"display_name": "Bob"}');
 
 -- Each user creates a household through the transactional function.
 set role authenticated;
 set request.jwt.claim.sub = '00000000-0000-0000-0000-00000000000a';
-select create_household('Household A', 'Europe/London') as ha \gset
+select create_household('Household A', 'Europe/London', '19:00', '{}') as ha \gset
 insert into events (household_id, title, starts_at, ends_at, timezone, created_by)
   values (:'ha', 'A secret', now(), now() + interval '1 hour', 'Europe/London', auth.uid());
 
 set request.jwt.claim.sub = '00000000-0000-0000-0000-00000000000b';
-select create_household('Household B', 'Europe/London') as hb \gset
+select create_household('Household B', 'Europe/London', '19:00', '{}') as hb \gset
 
 do $$
 declare n int;
