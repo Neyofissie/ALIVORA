@@ -21,9 +21,9 @@ export function seedHousehold(): Household {
 export function seedMembers(): Member[] {
   return [
     { id: "m-emma", name: "Emma", kind: "adult", role: "owner", email: "emma@example.com", colour: "#B8A7DB", status: "active" },
-    { id: "m-james", name: "James", kind: "adult", role: "admin", email: "james@example.com", colour: "#6F8F7B", status: "active" },
+    { id: "m-james", name: "James", kind: "adult", role: "admin", email: "james@example.com", colour: "#A9BFAF", status: "active" },
     { id: "m-ava", name: "Ava", kind: "dependant", note: "8 years", colour: "#D7A89A", status: "active" },
-    { id: "m-noah", name: "Noah", kind: "dependant", note: "5 years", colour: "#B77928", status: "active" },
+    { id: "m-noah", name: "Noah", kind: "dependant", note: "5 years", colour: "#E8C48F", status: "active" },
   ];
 }
 

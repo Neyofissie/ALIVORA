@@ -20,16 +20,17 @@ import { seedMembers } from "@/lib/mock/seed";
 
 const COLOURS = [
   ["Primary", "Deep Plum", "#352C4F"],
-  ["Secondary", "Soft Lavender", "#B8A7DB"],
-  ["Background", "Warm Ivory", "#F8F6F2"],
+  ["Secondary", "Lavender", "#B8A7DB"],
+  ["Sage", "Sage", "#A9BFAF"],
+  ["Accent", "Warm Rose", "#D7A89A"],
+  ["Background", "Ivory", "#F5F1EB"],
+  ["Text Primary", "Charcoal", "#1F2937"],
   ["Surface", "White", "#FFFFFF"],
-  ["Success", "Sage Green", "#6F8F7B"],
-  ["Accent", "Muted Rose", "#D7A89A"],
-  ["Warning", "Warm Amber", "#B77928"],
+  ["Success", "Sage ink", "#456150"],
+  ["Warning", "Amber ink", "#7E5014"],
   ["Error", "Deep Red", "#B42332"],
-  ["Text Primary", "Charcoal", "#252333"],
-  ["Text Secondary", "Slate", "#625F70"],
-  ["Border", "Soft Grey", "#E8E5EB"],
+  ["Text Secondary", "Slate", "#5E5A6B"],
+  ["Border", "Soft Grey", "#E5E0E8"],
 ] as const;
 
 const TYPE = [

@@ -63,7 +63,7 @@ export function Checkbox({
         className={cn(
           "flex size-6 shrink-0 items-center justify-center border-2 transition-colors duration-[var(--motion-button)] peer-focus-visible:ring-2 peer-focus-visible:ring-primary peer-focus-visible:ring-offset-2",
           round ? "rounded-full" : "rounded-md",
-          checked ? "border-success bg-success text-white" : "border-[#cfcad6] bg-surface",
+          checked ? "border-success bg-success text-white" : "border-border-strong bg-surface",
         )}
       >
         {checked && <Check className="animate-check size-4" strokeWidth={3} />}
@@ -101,7 +101,7 @@ export function RadioGroup<T extends string>({
             aria-hidden
             className={cn(
               "flex size-6 shrink-0 items-center justify-center rounded-full border-2 peer-focus-visible:ring-2 peer-focus-visible:ring-primary peer-focus-visible:ring-offset-2",
-              value === o.value ? "border-primary" : "border-[#cfcad6]",
+              value === o.value ? "border-primary" : "border-border-strong",
             )}
           >
             {value === o.value && <span className="size-3 rounded-full bg-primary" />}
@@ -128,7 +128,7 @@ export function SegmentedTabs<T extends string>({
   label: string;
 }) {
   return (
-    <div role="tablist" aria-label={label} className="flex rounded-full bg-[#efecf1] p-1">
+    <div role="tablist" aria-label={label} className="flex rounded-full bg-muted p-1">
       {options.map((o) => (
         <button
           key={o.value}

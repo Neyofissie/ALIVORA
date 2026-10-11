@@ -20,7 +20,7 @@ export function BottomSheet({
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="animate-fade fixed inset-0 z-40 bg-[#252333]/40" />
+        <Dialog.Overlay className="animate-fade fixed inset-0 z-40 bg-text-primary/40" />
         <Dialog.Content className="animate-sheet-up pb-safe fixed inset-x-0 bottom-0 z-50 mx-auto max-h-[90dvh] max-w-[480px] overflow-y-auto rounded-t-[var(--radius-sheet)] bg-surface px-5 pt-3 focus:outline-none">
           <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-border" aria-hidden />
           <div className="mb-4 flex items-start justify-between gap-4">
@@ -67,7 +67,7 @@ export function ConfirmDialog({
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="animate-fade fixed inset-0 z-40 bg-[#252333]/40" />
+        <Dialog.Overlay className="animate-fade fixed inset-0 z-40 bg-text-primary/40" />
         <Dialog.Content
           role="alertdialog"
           className="animate-fade-up fixed top-1/2 left-1/2 z-50 w-[calc(100%-40px)] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-card bg-surface p-6 focus:outline-none"

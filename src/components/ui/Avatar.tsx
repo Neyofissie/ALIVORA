@@ -51,7 +51,7 @@ export function AvatarGroup({
       {extra > 0 && (
         <span
           className={cn(
-            "inline-flex items-center justify-center rounded-full bg-[#efecf1] font-medium text-text-secondary ring-2 ring-surface",
+            "inline-flex items-center justify-center rounded-full bg-muted font-medium text-text-secondary ring-2 ring-surface",
             sizes[size],
           )}
         >

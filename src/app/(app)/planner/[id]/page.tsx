@@ -5,7 +5,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Bell, CalendarX2, Clock, MapPin, Repeat, Tag } from "lucide-react";
 import { SubHeader } from "@/components/layout/TopBar";
 import { Screen } from "@/components/layout/Screen";
-import { CATEGORY_STYLES } from "@/components/cards/EventCard";
+import { CATEGORY_STYLES, CategoryTile } from "@/components/cards/EventCard";
 import { Avatar } from "@/components/ui/Avatar";
 import { Button, LinkButton } from "@/components/ui/Button";
 import { EmptyState, ScreenSkeleton } from "@/components/ui/Feedback";
@@ -35,8 +35,8 @@ function EventDetail() {
 
   return (
     <div className="flex flex-col gap-5">
-      <section className="rounded-card bg-surface p-5 shadow-soft">
-        <span className={`mb-3 block h-1 w-10 rounded-full ${CATEGORY_STYLES[event.category].bar}`} aria-hidden />
+      <section className={`rounded-card p-5 ${CATEGORY_STYLES[event.category].tint}`}>
+        <CategoryTile category={event.category} className="mb-3" />
         <h1 className="text-h2 font-semibold">{event.title}</h1>
         <ul className="mt-4 flex flex-col gap-3">
           {rows.map(({ icon: Icon, label }) => (

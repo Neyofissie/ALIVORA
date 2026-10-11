@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Life, beautifully in sync.",
     start_url: "/home",
     display: "standalone",
-    background_color: "#F8F6F2",
+    background_color: "#F5F1EB",
     theme_color: "#352C4F",
     icons: [
       { src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },

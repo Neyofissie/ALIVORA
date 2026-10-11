@@ -15,11 +15,12 @@ import { formatDayLong, greetingFor } from "@/lib/dates";
 import { useBriefing, useOccurrences } from "@/lib/hooks";
 import { useStore } from "@/lib/store";
 
+/** Tints follow the row kinds: sage for plans, lavender for tasks and AI, amber for home. */
 const QUICK_ACTIONS = [
-  { href: "/planner/new", label: "Add event", icon: CalendarPlus },
-  { href: "/tasks/new", label: "Add task", icon: ListPlus },
-  { href: "/ai", label: "Ask Alivora", icon: Sparkles },
-  { href: "/tomorrow", label: "View tomorrow", icon: Sun },
+  { href: "/tasks/new", label: "Add task", icon: ListPlus, tile: "bg-secondary-soft text-primary" },
+  { href: "/planner/new", label: "Add event", icon: CalendarPlus, tile: "bg-success-soft text-success" },
+  { href: "/tomorrow", label: "View tomorrow", icon: Sun, tile: "bg-warning-soft text-warning" },
+  { href: "/ai", label: "Ask Alivora", icon: Sparkles, tile: "bg-secondary-soft text-primary" },
 ];
 
 export default function HomePage() {
@@ -54,9 +55,9 @@ export default function HomePage() {
           </SectionBoundary>
 
           <nav aria-label="Quick actions" className="grid grid-cols-4 gap-2">
-            {QUICK_ACTIONS.map(({ href, label, icon: Icon }) => (
+            {QUICK_ACTIONS.map(({ href, label, icon: Icon, tile }) => (
               <Link key={href} href={href} className="flex flex-col items-center gap-2 rounded-card py-2 text-center text-caption font-medium text-text-primary hover:bg-primary-soft">
-                <span className="flex size-12 items-center justify-center rounded-full bg-surface text-primary shadow-soft">
+                <span className={`flex size-12 items-center justify-center rounded-input ${tile}`}>
                   <Icon className="size-5" strokeWidth={1.75} />
                 </span>
                 {label}

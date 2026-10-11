@@ -67,7 +67,7 @@ export function Toaster() {
 }
 
 export function Skeleton({ className }: { className?: string }) {
-  return <div aria-hidden className={cn("animate-pulse rounded-input bg-[#ebe8ee]", className)} />;
+  return <div aria-hidden className={cn("animate-pulse rounded-input bg-muted", className)} />;
 }
 
 export function ScreenSkeleton() {
@@ -127,7 +127,7 @@ export function ProgressBar({ value, label }: { value: number; label: string }) 
       aria-valuenow={pct}
       aria-valuemin={0}
       aria-valuemax={100}
-      className="h-2 w-full overflow-hidden rounded-full bg-[#ebe8ee]"
+      className="h-2 w-full overflow-hidden rounded-full bg-muted"
     >
       <div className="h-full rounded-full bg-success transition-[width] duration-[var(--motion-card)]" style={{ width: `${pct}%` }} />
     </div>

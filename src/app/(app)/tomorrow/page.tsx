@@ -6,6 +6,7 @@ import { CalendarDays, CheckCircle2, ClipboardList, Lightbulb, ListPlus, Refresh
 import { SubHeader } from "@/components/layout/TopBar";
 import { Screen } from "@/components/layout/Screen";
 import { SunsetArch } from "@/components/cards/TomorrowReadyCard";
+import { CategoryTile } from "@/components/cards/EventCard";
 import { Avatar } from "@/components/ui/Avatar";
 import { Button } from "@/components/ui/Button";
 import { ScreenSkeleton } from "@/components/ui/Feedback";
@@ -70,9 +71,12 @@ export default function TomorrowPage() {
               <ul className="flex flex-col divide-y divide-border">
                 {briefing.events.map((e) => (
                   <li key={e.id}>
-                    <Link href={`/planner/${e.id}?date=${e.occurrenceDate}`} className="flex min-h-12 items-center gap-3 py-2">
-                      <span className="w-12 shrink-0 text-body font-semibold text-primary">{e.allDay ? "All day" : e.startTime}</span>
-                      <span className="min-w-0 flex-1 truncate text-body">{e.title}</span>
+                    <Link href={`/planner/${e.id}?date=${e.occurrenceDate}`} className="flex min-h-14 items-center gap-3 py-2">
+                      <CategoryTile category={e.category} tinted />
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate text-body font-semibold">{e.title}</span>
+                        <span className="block text-caption text-text-secondary">{e.allDay ? "All day" : `${e.startTime} – ${e.endTime}`}</span>
+                      </span>
                       <span className="flex -space-x-1.5">
                         {e.participantIds.slice(0, 3).map((id) => {
                           const m = memberById(id);

@@ -44,7 +44,7 @@ type Action =
   | { type: "markNotificationsRead"; id?: string };
 
 const STORAGE_KEY = "alivora:v1";
-const PALETTE = ["#B8A7DB", "#6F8F7B", "#D7A89A", "#B77928", "#625F70"];
+const PALETTE = ["#B8A7DB", "#A9BFAF", "#D7A89A", "#E8C48F", "#A9C2E0"];
 
 export function newId(prefix: string): string {
   return `${prefix}-${Math.random().toString(36).slice(2, 10)}`;

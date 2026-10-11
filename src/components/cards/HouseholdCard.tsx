@@ -24,7 +24,7 @@ export function HouseholdCard({ name, taskCount, members }: { name: string; task
 
 export function SubscriptionCard({ planName }: { planName: string }) {
   return (
-    <div className="rounded-card bg-[#f1ece6] p-5">
+    <div className="rounded-card bg-warning-soft p-5">
       <p className="flex items-center gap-2 text-body-lg font-semibold">
         <Crown className="size-5 text-warning" strokeWidth={1.75} fill="currentColor" fillOpacity={0.3} aria-hidden />
         Alivora Plus
